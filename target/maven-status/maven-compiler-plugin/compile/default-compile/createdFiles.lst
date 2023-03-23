@@ -1,0 +1,8 @@
+com/example/groupassessment/enitity/Type.class
+com/example/groupassessment/enitity/BaseEntity.class
+com/example/groupassessment/enitity/Repayment.class
+com/example/groupassessment/enitity/Liability.class
+com/example/groupassessment/enitity/Borrower.class
+com/example/groupassessment/enitity/Asset.class
+com/example/groupassessment/GroupAssessmentApplication.class
+com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class
