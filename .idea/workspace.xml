@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9af803f-f531-4757-b5af-9d379fda8b00" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/BorrowerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/BorrowerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/RepaymentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/RepaymentRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
