@@ -4,77 +4,84 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9af803f-f531-4757-b5af-9d379fda8b00" name="Changes" comment="">
+    <list default="true" id="022b4451-c236-41cf-9a4e-5797a83de8e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Bank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/BankAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/BorrowerImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Contract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Owner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/PaymentMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Remark.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/address/Commune.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/address/District.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/address/ProvinceOrCity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/address/Village.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/utils/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Bank.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/BankAccount$BankAccountBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/BankAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/BorrowerImage$BorrowerImageBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/BorrowerImage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract$ContractBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Loan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Owner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/PaymentMethod.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Remark.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/Log.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/Permission.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/Role.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/address/Commune.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/address/District.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/address/ProvinceOrCity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/address/Village.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/utils/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Liability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/services/RepaymentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/RepaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/RepaymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Liability.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/services/RepaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2NPA7FbISrIb4jdiNDAakjwD5Kc" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="assignment" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="assignment" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="f9af803f-f531-4757-b5af-9d379fda8b00" name="Changes" comment="" />
-      <created>1679555185043</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1679555185043</updated>
-    </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

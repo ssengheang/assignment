@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "liabilities")
-public class Liability extends BaseEntity {
+@Table(name = "loans")
+public class Loan extends BaseEntity {
     @Column(name = "loan_amount", nullable = false)
     private Float loanAmount;
     @Column(name = "date", nullable = false)
@@ -26,8 +26,18 @@ public class Liability extends BaseEntity {
 
     //relationship (borrower_id)
     @ManyToOne
-    @JoinColumn(name = "borrower_id", referencedColumnName = "id")
+    @JoinColumn(name = "borrower_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Borrower borrower;
-    @OneToMany(mappedBy = "liability")
+    @OneToMany(mappedBy = "loan")
     private List<Asset> asset;
+
+    @OneToMany(mappedBy = "loan")
+    private List<Contract> contracts;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false, insertable = false, updatable = false)
+    private Owner owner;
+
+    @OneToMany(mappedBy = "loan")
+    private List<Remark> remarks;
 }

@@ -3,7 +3,6 @@ package com.example.groupassessment.controller;
 import com.example.groupassessment.enitity.Repayment;
 import com.example.groupassessment.exception.ResourceNotFoundException;
 import com.example.groupassessment.repository.RepaymentRepo;
-import com.example.groupassessment.services.RepaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -43,7 +42,7 @@ public class RepaymentController {
 //        System.out.println(id);
         System.out.println(repayment_params.getBorrower());
         repayment.setBorrower(repayment_params.getBorrower());
-        repayment.setLiability(repayment_params.getLiability());
+        repayment.setLoan(repayment_params.getLoan());
         Repayment repayment_inserted = repaymentRepo.save(repayment);
         return ResponseEntity.status(201).body(repayment_inserted);
     }

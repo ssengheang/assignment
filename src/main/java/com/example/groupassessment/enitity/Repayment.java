@@ -24,10 +24,14 @@ public class Repayment extends BaseEntity {
     //relationships (borrower_id, liability_id)
 
     @ManyToOne
-    @JoinColumn(name = "borrower_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "borrower_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Borrower borrower;
 
     @ManyToOne
-    @JoinColumn(name = "liability_id", referencedColumnName = "id", nullable = false)
-    private Liability liability;
+    @JoinColumn(name = "loan_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Loan loan;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private PaymentMethod paymentMethod;
 }
