@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9af803f-f531-4757-b5af-9d379fda8b00" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Liability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Liability.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" afterDir="false" />
-    </list>
+    <list default="true" id="f9af803f-f531-4757-b5af-9d379fda8b00" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
