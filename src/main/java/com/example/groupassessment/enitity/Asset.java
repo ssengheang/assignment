@@ -20,10 +20,10 @@ public class Asset extends BaseEntity {
     //Two relationships (liability_id, type_id)
 
     @ManyToOne
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    @JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "liability_id", referencedColumnName = "id")
-    private Liability liability;
+    @JoinColumn(name = "loan_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Loan loan;
 }

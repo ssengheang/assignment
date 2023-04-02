@@ -21,13 +21,17 @@ public class Repayment extends BaseEntity {
     @Column(name = "interest_due", nullable = false)
     private Float interestDue;
 
-    //relationships (borrower_id, liability_id)
+    //relationships (borrower_id, loan_id)
 
     @ManyToOne
-    @JoinColumn(name = "borrower_id", referencedColumnName = "id")
+    @JoinColumn(name = "borrower_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Borrower borrower;
 
     @ManyToOne
-    @JoinColumn(name = "liability_id", referencedColumnName = "id")
-    private Liability liability;
+    @JoinColumn(name = "loan_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Loan loan;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private PaymentMethod paymentMethod;
 }
