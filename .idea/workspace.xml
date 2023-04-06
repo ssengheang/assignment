@@ -46,18 +46,18 @@
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/utils/Person.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Asset.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Liability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/services/RepaymentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/RepaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/RepaymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/BorrowerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/controller/BorrowerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Asset.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower$BorrowerBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Liability.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Repayment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/services/RepaymentService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -66,6 +66,19 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
