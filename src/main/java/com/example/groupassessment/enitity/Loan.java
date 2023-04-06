@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,10 @@ public class Loan extends BaseEntity {
     private Integer interest;
     @Column(name = "amount_left", nullable = false)
     private Float amountLeft;
+
+    @Column(name = "status", nullable = false)
+    @Value("pending")
+    private String status;
 
     //relationship (borrower_id)
     @ManyToOne
