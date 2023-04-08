@@ -23,8 +23,8 @@ public class Owner extends Person {
     @Column(name = "pid_type", length = 2, nullable = false)
     private String pidType;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Loan> loans;
+//    @OneToMany(mappedBy = "owner")
+//    private List<Loan> loans;
 
     @OneToOne
     @JoinColumn(name = "address_id")

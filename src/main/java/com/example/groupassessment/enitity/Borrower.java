@@ -1,8 +1,10 @@
 package com.example.groupassessment.enitity;
 
 import com.example.groupassessment.enitity.address.ProvinceOrCity;
+import com.example.groupassessment.enitity.enum_data_type.PidType;
 import com.example.groupassessment.utils.BaseEntity;
 import com.example.groupassessment.utils.Person;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,25 +24,27 @@ public class Borrower extends Person {
     private String phone;
     @Column(name = "pid_number", length = 50, nullable = false)
     private String pidNumber;
-    @Column(name = "pid_type", length = 2, nullable = false)
-    private String pidType;
+    @Column(name = "pid_type", length = 32, columnDefinition = "varchar(32) default 'IDENTITY_CARD'")
+    @Enumerated(value = EnumType.STRING)
+    private PidType pidType = PidType.IDENTITY_CARD;
 
-    @OneToMany(mappedBy = "borrower")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Loan> loan;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrower", fetch = FetchType.LAZY)
     private List<Repayment> repayment;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BorrowerImage> borrowerImages;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Contract> contract;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrower", fetch = FetchType.LAZY)
     private List<BankAccount> bankAccounts;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id", nullable = true)
     private ProvinceOrCity provinceOrCity;
 }

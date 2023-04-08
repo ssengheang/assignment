@@ -2,6 +2,9 @@ package com.example.groupassessment.service;
 
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.repository.BorrowerRepo;
+import com.example.groupassessment.request_param.borrower.CreateReqParam;
+import com.example.groupassessment.request_param.borrower.UpdateReqParam;
+import com.example.groupassessment.response.BorrowerView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
@@ -17,13 +20,7 @@ public class BorrowerService {
     }
 
     public List<Borrower> index() {
-        List<Borrower> borrowers = null;
-        try {
-            borrowers = borrowerRepo.findAll();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return borrowers;
+        return borrowerRepo.findAll();
     }
 
     public Borrower show(Long id){
@@ -31,11 +28,19 @@ public class BorrowerService {
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
-    public Borrower create(Borrower borrower){
-        return borrowerRepo.save(borrower);
+    public Borrower create(CreateReqParam borrower){
+        Borrower borrower1 = new Borrower();
+        borrower1.setFullName(borrower.getFullName());
+        borrower1.setAge(borrower.getAge());
+        borrower1.setPhone(borrower.getPhone());
+        if (borrower.getPidType() != null){
+            borrower1.setPidType(borrower.getPidType());
+        }
+        borrower1.setPidNumber(borrower.getPidNumber());
+        return borrowerRepo.save(borrower1);
     }
 
-    public Borrower update(Long id, Borrower borrower){
+    public Borrower update(Long id, UpdateReqParam borrower){
         Borrower update_borrower = borrowerRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         update_borrower.setFullName(borrower.getFullName());
         update_borrower.setAge(borrower.getAge());
@@ -43,9 +48,9 @@ public class BorrowerService {
         return borrowerRepo.save(update_borrower);
     }
 
-    public String delete(Long id){
+    public BorrowerView<Borrower> delete(Long id){
         Borrower delete_borrower = borrowerRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         borrowerRepo.delete(delete_borrower);
-        return "Deleted";
+        return new BorrowerView<>("200", "Deleted");
     }
 }
