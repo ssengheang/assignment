@@ -18,8 +18,9 @@ public class UploadFile {
     private final Path root = Paths.get("uploads");
     private MultipartFile file;
     private UUID uuid;
-    private String path = "http://localhost:8080/borrower-images/load/";
+//    private String path = "http://localhost:8080/borrower-images/load/";
     private String file_name;
+    private String path;
 
     public void init() {
         try {
@@ -29,7 +30,8 @@ public class UploadFile {
         }
     }
 
-    public UploadFile(MultipartFile file){
+    public UploadFile(MultipartFile file, String path){
+        this.path = path;
         this.file = file;
     }
 

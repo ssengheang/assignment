@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="022b4451-c236-41cf-9a4e-5797a83de8e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Contract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/BorrowerImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/BorrowerImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/utils/UploadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/utils/UploadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract$ContractBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract$ContractBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Contract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Loan.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

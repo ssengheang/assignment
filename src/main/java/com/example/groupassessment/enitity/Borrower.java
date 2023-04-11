@@ -39,12 +39,15 @@ public class Borrower extends Person {
     @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BorrowerImage> borrowerImages;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Contract> contract;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "borrower", fetch = FetchType.LAZY)
     private List<BankAccount> bankAccounts;
 
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "address_id", nullable = true)
     private ProvinceOrCity provinceOrCity;

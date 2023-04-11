@@ -3,6 +3,7 @@ package com.example.groupassessment.enitity;
 import com.example.groupassessment.enitity.enum_data_type.LoanStatus;
 import com.example.groupassessment.utils.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,6 +41,7 @@ public class Loan extends BaseEntity {
     @OneToMany(mappedBy = "loan", fetch = FetchType.LAZY)
     private List<Asset> asset;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "loan", fetch = FetchType.LAZY)
     private List<Contract> contracts;
 

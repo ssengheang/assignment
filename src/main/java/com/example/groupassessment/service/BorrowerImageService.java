@@ -30,7 +30,7 @@ public class BorrowerImageService {
     public void save(MultipartFile file, CreateReqParam params) {
         try {
             //Upload file
-            UploadFile uploadFile = new UploadFile(file);
+            UploadFile uploadFile = new UploadFile(file, "/borrower-images/load/");
             String path = uploadFile.uploadFile();
 
             // Add to DB
@@ -79,7 +79,7 @@ public class BorrowerImageService {
         try {
             BorrowerImage update_borrower_image = borrowerImageRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
             //Upload file
-            UploadFile uploadFile = new UploadFile(file);
+            UploadFile uploadFile = new UploadFile(file, "/borrower-images/load/");
             String path = uploadFile.uploadFile();
 
             // Update record
