@@ -36,9 +36,9 @@ public class UploadFile {
     public String uploadFile(){
         this.init();
         String file_path;
+        uuid  = UUID.randomUUID();
         file_name = uuid + "-" + file.getOriginalFilename();
         try {
-            uuid  = UUID.randomUUID();
             Files.copy(file.getInputStream(), root.resolve(file_name));
             file_path = this.path + file_name;
         }catch (Exception e){throw new RuntimeException(e.getMessage());}
