@@ -35,6 +35,7 @@ public class Borrower extends Person {
     @OneToMany(mappedBy = "borrower", fetch = FetchType.LAZY)
     private List<Repayment> repayment;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "borrower", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BorrowerImage> borrowerImages;
 
