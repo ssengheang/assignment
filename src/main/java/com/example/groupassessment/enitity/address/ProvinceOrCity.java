@@ -1,7 +1,7 @@
 package com.example.groupassessment.enitity.address;
 
 import com.example.groupassessment.enitity.Borrower;
-import com.example.groupassessment.enitity.Owner;
+//import com.example.groupassessment.enitity.Owner;
 import com.example.groupassessment.utils.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +28,6 @@ public class ProvinceOrCity extends BaseEntity {
     @OneToOne(mappedBy = "provinceOrCity")
     private Borrower borrower;
 
-    @OneToOne(mappedBy = "provinceOrCity")
-    private Owner owner;
+//    @OneToOne(mappedBy = "provinceOrCity")
+//    private Owner owner;
 }
