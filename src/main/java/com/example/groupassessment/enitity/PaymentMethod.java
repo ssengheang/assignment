@@ -24,4 +24,10 @@ public class PaymentMethod extends BaseEntity {
     @OneToMany(mappedBy = "paymentMethod")
     private List<Repayment> repayment;
 
+    public List<Repayment> getCustomer() {
+        return null;
+    }
+
+    public void setCustomer(List<Repayment> customer) {
+    }
 }

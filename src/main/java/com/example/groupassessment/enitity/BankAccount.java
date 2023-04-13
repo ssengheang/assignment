@@ -26,4 +26,11 @@ public class BankAccount extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "bank_id", nullable = false, insertable = false, updatable = false)
     private Bank bank;
+
+    public Object getCustomer() {
+        return null;
+    }
+
+    public void setCustomer(Object customer) {
+    }
 }
