@@ -38,8 +38,8 @@ public class UserController {
     public User updateUser(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam user_params){
         return userServiceImp.update(id, user_params);
     }
-//
-//    @DeleteMapping("/{id}")
-//    public BorrowerView<Borrower> deleteBorrower(@PathVariable(name = "id") Long id){
-//        return borrowerServiceImp.delete(id);
-//    }
+
+    @DeleteMapping("/{id}")
+    public UserView<Borrower> deleteUser(@PathVariable(name = "id") Long id){
+        return userServiceImp.delete(id);
+    }
