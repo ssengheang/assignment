@@ -1,5 +1,4 @@
 package com.example.groupassessment.controller;
 
-public class LiabilityController {
-
+public class Permission {
 }
