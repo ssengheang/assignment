@@ -1,10 +1,11 @@
+
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Borrower;
-import com.example.groupassessment.request_param.borrower.CreateReqParam;
-import com.example.groupassessment.request_param.borrower.UpdateReqParam;
-import com.example.groupassessment.response.BorrowerView;
-import com.example.groupassessment.service.serviceImp.BorrowerServiceImp;
+import com.example.groupassessment.request_param.user.CreateReqParam;
+import com.example.groupassessment.request_param.user.UpdateReqParam;
+import com.example.groupassessment.response.UserView;
+import com.example.groupassessment.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,8 @@ public class UserController {
     }
 
     @PostMapping("")
-    public User createUser(@Validated @RequestBody CreateReqParam borrower_params){
-        return userServiceImp.create(user_params);
+    public User createUser(@Validated @RequestBody CreateReqParam user_params){
+        return userServiceImp.create(borrower_params);
     }
 
     @GetMapping("")
@@ -40,6 +41,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public UserView<Borrower> deleteUser(@PathVariable(name = "id") Long id){
+    public UserView<User> deleteUser(@PathVariable(name = "id") Long id){
         return userServiceImp.delete(id);
     }
+}
