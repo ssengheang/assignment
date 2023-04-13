@@ -19,10 +19,10 @@ public class UserController {
         this.userServiceImp = userServiceImp;
     }
 
-//    @PostMapping("")
-//    public Borrower createBorrower(@Validated @RequestBody CreateReqParam borrower_params){
-//        return borrowerServiceImp.create(borrower_params);
-//    }
+    @PostMapping("")
+    public User createUser(@Validated @RequestBody CreateReqParam borrower_params){
+        return userServiceImp.create(user_params);
+    }
 
     @GetMapping("")
     public List<User> listUser(){
@@ -34,10 +34,10 @@ public class UserController {
         return userServiceImp.show(id);
     }
 
-//    @PutMapping("/{id}")
-//    public Borrower updateBorrower(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam borrower_params){
-//        return borrowerServiceImp.update(id, borrower_params);
-//    }
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam user_params){
+        return userServiceImp.update(id, user_params);
+    }
 //
 //    @DeleteMapping("/{id}")
 //    public BorrowerView<Borrower> deleteBorrower(@PathVariable(name = "id") Long id){
