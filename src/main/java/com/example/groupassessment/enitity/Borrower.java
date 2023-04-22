@@ -1,8 +1,6 @@
 package com.example.groupassessment.enitity;
 
-import com.example.groupassessment.enitity.address.ProvinceOrCity;
 import com.example.groupassessment.enitity.enum_data_type.PidType;
-import com.example.groupassessment.utils.BaseEntity;
 import com.example.groupassessment.utils.Person;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -48,7 +46,6 @@ public class Borrower extends Person {
     private List<BankAccount> bankAccounts;
 
     @JsonManagedReference
-    @OneToOne
-    @JoinColumn(name = "address_id", nullable = true)
-    private ProvinceOrCity provinceOrCity;
+    @OneToOne(mappedBy = "borrower", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Address address;
 }

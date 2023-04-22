@@ -41,11 +41,12 @@ public class BorrowerServiceImp implements BorrowerService {
             borrower1.setPidType(borrower.getPidType());
         }
         borrower1.setPidNumber(borrower.getPidNumber());
+
         return borrowerRepo.save(borrower1);
     }
 
     @Override
-    public Borrower update(Long id, UpdateReqParam borrower){
+    public Borrower update(Long id, Borrower borrower){
         Borrower update_borrower = borrowerRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         update_borrower.setFullName(borrower.getFullName());
         update_borrower.setAge(borrower.getAge());

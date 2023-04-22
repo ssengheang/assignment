@@ -10,7 +10,7 @@ import java.util.List;
 public interface BorrowerService {
     List<Borrower> index();
     Borrower show(Long id);
-    Borrower update(Long id, UpdateReqParam borrower);
+    Borrower update(Long id, Borrower borrower);
     Borrower create(CreateReqParam borrower);
     BorrowerView<Borrower> delete(Long id);
 }
