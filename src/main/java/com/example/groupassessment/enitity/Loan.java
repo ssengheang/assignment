@@ -38,6 +38,8 @@ public class Loan extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "borrower_id", nullable = false, updatable = false)
     private Borrower borrower;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "loan", fetch = FetchType.LAZY)
     private List<Asset> asset;
 
@@ -49,8 +51,13 @@ public class Loan extends BaseEntity {
 //    @JoinColumn(name = "owner_id", nullable = false, insertable = false, updatable = false)
 //    private Owner owner;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "loan", fetch = FetchType.LAZY)
     private List<Remark> remarks;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "loan", fetch = FetchType.LAZY)
+    private List<Repayment> repayment;
 }
 
 
