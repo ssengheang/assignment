@@ -1,6 +1,7 @@
 package com.example.groupassessment.enitity.account;
 
 import com.example.groupassessment.utils.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,11 +24,11 @@ public class User extends BaseEntity {
     @Column(name = "password", length = 100, nullable = false)
     private String password;
     @Column(name = "is_active", nullable = false)
-    @Value("true")
-    private boolean isActive;
+    private boolean isActive = true;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "role_id", nullable = false, updatable = false)
     private Role role;
 
     @OneToMany(mappedBy = "user")
