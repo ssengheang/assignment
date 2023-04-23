@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="022b4451-c236-41cf-9a4e-5797a83de8e6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/DraftRepaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Borrower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/PaymentMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/PaymentMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/Repayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/Borrower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/RepaymentServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/RepaymentServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

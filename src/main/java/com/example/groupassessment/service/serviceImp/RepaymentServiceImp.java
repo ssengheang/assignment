@@ -43,17 +43,13 @@ public class RepaymentServiceImp implements RepaymentService {
 
     @Override
     public Repayment create(CreateReqParam repayment) {
-        System.out.println(repayment);
         Repayment repayment1 = new Repayment();
-        System.out.println("/////////======");
         Borrower borrower = borrowerRepo.findById(repayment.getBorrowerId())
                 .orElseThrow(() -> new ResourceAccessException("Constrain error (No Borrower resource found!)"));
         Loan loan = loanRepo.findById(repayment.getLoanId())
                 .orElseThrow(() -> new ResourceAccessException("Constrain error (No Loan resource found!)"));
         PaymentMethod paymentMethod = paymentMethodRepo.findById(repayment.getPaymentMethodId())
                 .orElseThrow(() -> new ResourceAccessException("Constrain error (No Payment-Method resource found!)"));
-
-        System.out.println("borrower=====");
 
         repayment1.setAmount(repayment.getAmount());
         repayment1.setDate(repayment.getDate());
