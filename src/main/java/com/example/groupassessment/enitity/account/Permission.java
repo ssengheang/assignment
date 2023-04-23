@@ -16,6 +16,7 @@ import java.util.List;
 public class Permission extends BaseEntity {
     @Column(name = "feature", length = 50, nullable = false)
     private String feature;
+    private List<String> actions;
 
     @ManyToMany(mappedBy = "permissions")
     List<Role> roles;

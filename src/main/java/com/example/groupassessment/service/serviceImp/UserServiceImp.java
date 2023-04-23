@@ -6,7 +6,6 @@ import com.example.groupassessment.repository.RoleRepo;
 import com.example.groupassessment.repository.UserRepo;
 import com.example.groupassessment.request_param.user.*;
 import com.example.groupassessment.service.UserService;
-import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
