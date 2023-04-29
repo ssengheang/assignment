@@ -1,6 +1,7 @@
 package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Bank;
+import com.example.groupassessment.enitity.projection.BankProjection;
 import com.example.groupassessment.repository.BankRepo;
 import com.example.groupassessment.request_param.bank.ReqParam;
 import com.example.groupassessment.service.BankService;
@@ -18,13 +19,13 @@ public class BankServiceImp implements BankService {
 
 
     @Override
-    public List<Bank> index() {
-        return bankRepo.findAll();
+    public List<BankProjection> index() {
+        return bankRepo.findAllBy();
     }
 
     @Override
-    public Bank show(Long id) {
-        return bankRepo.findById(id)
+    public BankProjection show(Long id) {
+        return bankRepo.findBankProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
@@ -44,10 +45,10 @@ public class BankServiceImp implements BankService {
     }
 
     @Override
-    public String delete(Long id) {
+    public Boolean delete(Long id) {
         Bank bank1 = bankRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         bankRepo.delete(bank1);
-        return "Deleted";
+        return true;
     }
 }

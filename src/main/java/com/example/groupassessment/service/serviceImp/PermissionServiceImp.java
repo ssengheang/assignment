@@ -1,6 +1,7 @@
 package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.account.Permission;
+import com.example.groupassessment.enitity.projection.PermissionProjection;
 import com.example.groupassessment.repository.PermissionRepo;
 import com.example.groupassessment.request_param.permission.ReqParam;
 import com.example.groupassessment.service.PermissionService;
@@ -17,22 +18,22 @@ public class PermissionServiceImp implements PermissionService {
         this.permissionRepo = permissionRepo;
     }
     @Override
-    public List<Permission> index() {
-        return permissionRepo.findAll();
+    public List<PermissionProjection> index() {
+        return permissionRepo.findAllBy();
     }
 
     @Override
-    public Permission show(Long id) {
-        return permissionRepo.findById(id)
+    public PermissionProjection show(Long id) {
+        return permissionRepo.findPermissionProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
     @Override
-    public String delete(Long id) {
+    public Boolean delete(Long id) {
         Permission permission1 = permissionRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         permissionRepo.delete(permission1);
-        return "Deleted";
+        return true;
     }
 
     @Override

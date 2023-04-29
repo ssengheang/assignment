@@ -1,6 +1,7 @@
 package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Type;
+import com.example.groupassessment.enitity.projection.TypeProjection;
 import com.example.groupassessment.repository.TypeRepo;
 import com.example.groupassessment.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,13 @@ public class TypeServiceImp implements TypeService {
     }
 
     @Override
-    public List<Type> index() {
-        return typeRepo.findAll();
+    public List<TypeProjection> index() {
+        return typeRepo.findAllBy();
     }
 
     @Override
-    public Type show(Long id){
-        return typeRepo.findById(id)
+    public TypeProjection show(Long id){
+        return typeRepo.findTypeProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 }

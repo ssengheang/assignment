@@ -3,6 +3,7 @@ package com.example.groupassessment.service.serviceImp;
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.enum_data_type.LoanStatus;
+import com.example.groupassessment.enitity.projection.LoanProjection;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.request_param.loan.CreateReqParam;
@@ -13,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LoanServiceImp implements LoanService {
@@ -26,18 +29,12 @@ public class LoanServiceImp implements LoanService {
     }
 
     @Override
-    public List<Loan> index() {
-        List<Loan> loans = null;
-        try {
-            loans = loanRepo.findAll();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return loans;
+    public List<LoanProjection> index() {
+        return loanRepo.findAllBy();
     }
     @Override
-    public Loan show(Long id){
-        return loanRepo.findById(id)
+    public LoanProjection show(Long id){
+        return loanRepo.findLoanProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
     @Override
@@ -62,33 +59,41 @@ public class LoanServiceImp implements LoanService {
         return loanRepo.save(update_loan);
     }
     @Override
-    public LoanView<Loan> approve(Long id){
+    public Map<String, Boolean> approve(Long id){
         Loan update_loan = loanRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         boolean is_pending = update_loan.getStatus() == LoanStatus.PENDING;
+        Map<String, Boolean> map = new HashMap<>();
+        System.out.println(is_pending);
+        System.out.println(!is_pending);
         if (!is_pending){
-            return new LoanView<>("404", "Please make sure status is 'PENDING'");
-        }else{
-            update_loan.setStatus(LoanStatus.APPROVED);
-            return new LoanView<>("200", "success", loanRepo.save(update_loan));
-        }
-    }
-    @Override
-    public LoanView<Loan> reject(Long id){
-        Loan update_loan = loanRepo.findById(id)
-                .orElseThrow(() -> new ResourceAccessException("No resource found!"));
-        boolean is_pending = update_loan.getStatus() == LoanStatus.PENDING;
-        if (!is_pending){
-            return new LoanView<>("404", "Please make sure status is 'PENDING'");
+            map.put("isPending", false);
         }else{
             update_loan.setStatus(LoanStatus.REJECTED);
-            return new LoanView<>("200", "success", loanRepo.save(update_loan));
+            loanRepo.save(update_loan);
+            map.put("isPending", true);
         }
+        return map;
     }
     @Override
-    public LoanView<Loan> delete(Long id){
+    public Map<String, Boolean> reject(Long id){
+        Loan update_loan = loanRepo.findById(id)
+                .orElseThrow(() -> new ResourceAccessException("No resource found!"));
+        boolean is_pending = update_loan.getStatus() == LoanStatus.PENDING;
+        Map<String, Boolean> map = new HashMap<>();
+        if (!is_pending){
+            map.put("isPending", false);
+        }else{
+            update_loan.setStatus(LoanStatus.REJECTED);
+            loanRepo.save(update_loan);
+            map.put("isPending", true);
+        }
+        return map;
+    }
+    @Override
+    public Boolean delete(Long id){
         Loan loan = loanRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         loanRepo.delete(loan);
-        return new LoanView<>("200", "Deleted");
+        return true;
     }
 }

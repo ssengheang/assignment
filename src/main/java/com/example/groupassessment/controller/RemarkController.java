@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Remark;
+import com.example.groupassessment.enitity.projection.RemarkProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.remark.CreateReqParam;
 import com.example.groupassessment.request_param.remark.UpdateReqParam;
 import com.example.groupassessment.service.serviceImp.RemarkServiceImp;
@@ -25,22 +28,43 @@ public class RemarkController {
     }
 
     @GetMapping("")
-    public List<Remark> listRemark(){
+    public List<RemarkProjection> listRemark(){
         return remarkServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Remark getRemarkById(@PathVariable(name = "id") Long id){
-        return remarkServiceImp.show(id);
+    public ApiResponse getRemarkById(@PathVariable(name = "id") Long id){
+        RemarkProjection remarkProjection = remarkServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                remarkProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public Remark updateRemark(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam remark){
-        return remarkServiceImp.update(id, remark);
+    public ApiResponse updateRemark(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam remark){
+        Remark remark1 = remarkServiceImp.update(id, remark);
+        RemarkProjection remarkProjection = remarkServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                remarkProjection
+        );
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRemark(@PathVariable(name = "id") Long id){
-        return remarkServiceImp.delete(id);
+    public ApiResponse deleteRemark(@PathVariable(name = "id") Long id){
+        Boolean isDeleted = remarkServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

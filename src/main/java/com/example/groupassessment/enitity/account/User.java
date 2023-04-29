@@ -26,7 +26,7 @@ public class User extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
-    @JsonBackReference
+//    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false, updatable = false)
     private Role role;

@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Asset;
+import com.example.groupassessment.enitity.projection.AssetProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.asset.CreateReqParam;
 import com.example.groupassessment.request_param.asset.UpdateReqParam;
 import com.example.groupassessment.service.serviceImp.AssetServiceImp;
@@ -19,27 +22,54 @@ public class AssetController {
     }
 
     @PostMapping("")
-    public Asset createAsset(@Validated @RequestBody CreateReqParam asset){
-        return assetServiceImp.create(asset);
+    public ApiResponse createAsset(@Validated @RequestBody CreateReqParam asset){
+        Asset asset1 = assetServiceImp.create(asset);
+        AssetProjection assetProjection = assetServiceImp.show(asset1.getId());
+        return new ApiResponse<>(
+                ApiStatus.SUC_CREATED.getCode(),
+                ApiStatus.SUC_CREATED.getMessage(),
+                assetProjection
+        );
     }
 
     @GetMapping("")
-    public List<Asset> listAsset(){
+    public List<AssetProjection> listAsset(){
         return assetServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Asset getAssetById(@PathVariable(name = "id") Long id){
-        return assetServiceImp.show(id);
+    public ApiResponse getAssetById(@PathVariable(name = "id") Long id){
+        AssetProjection assetProjection = assetServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                assetProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public Asset updateAsset(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam asset){
-        return assetServiceImp.update(id, asset);
+    public ApiResponse updateAsset(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam asset){
+        Asset asset1 = assetServiceImp.update(id, asset);
+        AssetProjection assetProjection = assetServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                assetProjection
+        );
     }
 
     @DeleteMapping("/{id}")
-    public String deleteAsset(@PathVariable(name = "id") Long id){
-        return assetServiceImp.delete(id);
+    public ApiResponse deleteAsset(@PathVariable(name = "id") Long id){
+        Boolean isDeleted = assetServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

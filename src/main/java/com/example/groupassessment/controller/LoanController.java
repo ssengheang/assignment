@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Loan;
+import com.example.groupassessment.enitity.projection.LoanProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.loan.CreateReqParam;
 import com.example.groupassessment.request_param.loan.UpdateReqParam;
 import com.example.groupassessment.response.LoanView;
@@ -10,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/loans")
 public class LoanController {
@@ -20,37 +25,92 @@ public class LoanController {
     }
 
     @PostMapping("")
-    public Loan createLoan(@Validated @RequestBody CreateReqParam loan_params){
-        return loanServiceImp.create(loan_params);
+    public ApiResponse createLoan(@Validated @RequestBody CreateReqParam loan_params){
+        Loan loan = loanServiceImp.create(loan_params);
+        LoanProjection loanProjection = loanServiceImp.show(loan.getId());
+        return new ApiResponse<>(
+                ApiStatus.SUC_CREATED.getCode(),
+                ApiStatus.SUC_CREATED.getMessage(),
+                loanProjection
+        );
     }
 
     @GetMapping("")
-    public List<Loan> listLoan(){
+    public List<LoanProjection> listLoan(){
         return loanServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Loan getLoanById(@PathVariable(name = "id") Long id){
-        return loanServiceImp.show(id);
+    public ApiResponse getLoanById(@PathVariable(name = "id") Long id){
+        LoanProjection loanProjection = loanServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                loanProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public Loan updateLoan(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam loan_params){
-        return loanServiceImp.update(id, loan_params);
+    public ApiResponse updateLoan(@PathVariable(name = "id") Long id, @Validated @RequestBody UpdateReqParam loan_params){
+        Loan loan = loanServiceImp.update(id, loan_params);
+        LoanProjection loanProjection = loanServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                loanProjection
+        );
     }
 
     @PutMapping("/{id}/approve")
-    public LoanView<Loan> approve(@PathVariable(name = "id") Long id){
-        return loanServiceImp.approve(id);
+    public ApiResponse approve(@PathVariable(name = "id") Long id){
+        Map<String, Boolean> loan = loanServiceImp.approve(id);
+        if (loan.get("isPending") == true){
+            LoanProjection loanProjection = loanServiceImp.show(id);
+            return new ApiResponse<>(
+                    ApiStatus.SUC_UPDATED.getCode(),
+                    ApiStatus.SUC_UPDATED.getMessage(),
+                    loanProjection
+            );
+        }else {
+            return new ApiResponse<>(
+                    ApiStatus.FAI_UPDATED.getCode(),
+                    ApiStatus.FAI_UPDATED.getMessage(),
+                    "Please make sure status is 'pending'"
+            );
+        }
     }
 
     @PutMapping("/{id}/reject")
-    public LoanView<Loan> reject(@PathVariable(name = "id") Long id){
-        return loanServiceImp.reject(id);
+    public ApiResponse reject(@PathVariable(name = "id") Long id){
+        Map<String, Boolean> loan = loanServiceImp.reject(id);
+        if (loan.get("isPending") == true){
+            LoanProjection loanProjection = loanServiceImp.show(id);
+            return new ApiResponse<>(
+                    ApiStatus.SUC_UPDATED.getCode(),
+                    ApiStatus.SUC_UPDATED.getMessage(),
+                    loanProjection
+            );
+        }else {
+            return new ApiResponse<>(
+                    ApiStatus.FAI_UPDATED.getCode(),
+                    ApiStatus.FAI_UPDATED.getMessage(),
+                    "Please make sure status is 'pending'"
+            );
+        }
     }
 
     @DeleteMapping("/{id}")
-    public LoanView<Loan> deleteLoan(@PathVariable(name = "id") Long id){
-        return loanServiceImp.delete(id);
+    public ApiResponse deleteLoan(@PathVariable(name = "id") Long id){
+        Boolean isDeleted = loanServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

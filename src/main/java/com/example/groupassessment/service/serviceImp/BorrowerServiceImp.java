@@ -1,6 +1,7 @@
 package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Borrower;
+import com.example.groupassessment.enitity.projection.BorrowerProjection;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
 import com.example.groupassessment.request_param.borrower.UpdateReqParam;
@@ -21,13 +22,13 @@ public class BorrowerServiceImp implements BorrowerService {
     }
 
     @Override
-    public List<Borrower> index() {
-        return borrowerRepo.findAll();
+    public List<BorrowerProjection> index() {
+        return borrowerRepo.findAllBy();
     }
 
     @Override
-    public Borrower show(Long id){
-        return borrowerRepo.findById(id)
+    public BorrowerProjection show(Long id){
+        return borrowerRepo.findBorrowerProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
@@ -55,9 +56,9 @@ public class BorrowerServiceImp implements BorrowerService {
     }
 
     @Override
-    public BorrowerView<Borrower> delete(Long id){
+    public Boolean delete(Long id){
         Borrower delete_borrower = borrowerRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         borrowerRepo.delete(delete_borrower);
-        return new BorrowerView<>("200", "Deleted");
+        return true;
     }
 }

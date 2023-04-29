@@ -19,7 +19,7 @@ public class PaymentMethod extends BaseEntity {
     private String methodName;
 
     @ManyToOne
-    @JoinColumn(name = "bank_id", nullable = true, insertable = false)
+    @JoinColumn(name = "bank_id", nullable = true)
     private Bank bank;
 
     @JsonManagedReference

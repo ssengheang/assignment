@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Type;
+import com.example.groupassessment.enitity.projection.TypeProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.service.serviceImp.TypeServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +20,17 @@ public class TypeController {
     }
 
     @GetMapping("")
-    public List<Type> listType(){
+    public List<TypeProjection> listType(){
         return typeServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Type getTypeById(@PathVariable(name = "id") Long id){
-        return typeServiceImp.show(id);
+    public ApiResponse getTypeById(@PathVariable(name = "id") Long id){
+        TypeProjection typeProjection = typeServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                typeProjection
+        );
     }
 }

@@ -2,6 +2,7 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Bank;
 import com.example.groupassessment.enitity.PaymentMethod;
+import com.example.groupassessment.enitity.projection.PaymentMethodProjection;
 import com.example.groupassessment.repository.BankRepo;
 import com.example.groupassessment.repository.PaymentMethodRepo;
 import com.example.groupassessment.request_param.payment_method.CreateReqParam;
@@ -23,13 +24,13 @@ public class PaymentMethodServiceImp implements PaymentMethodService {
         this.bankRepo = bankRepo;
     }
     @Override
-    public List<PaymentMethod> index() {
-        return paymentMethodRepo.findAll();
+    public List<PaymentMethodProjection> index() {
+        return paymentMethodRepo.findAllBy();
     }
 
     @Override
-    public PaymentMethod show(Long id) {
-        return paymentMethodRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
+    public PaymentMethodProjection show(Long id) {
+        return paymentMethodRepo.findPaymentMethodProjectionById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
     @Override
@@ -53,10 +54,10 @@ public class PaymentMethodServiceImp implements PaymentMethodService {
     }
 
     @Override
-    public String delete(Long id) {
+    public Boolean delete(Long id) {
         PaymentMethod paymentMethod1 = paymentMethodRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         paymentMethodRepo.delete(paymentMethod1);
-        return "Deleted";
+        return true;
     }
 }

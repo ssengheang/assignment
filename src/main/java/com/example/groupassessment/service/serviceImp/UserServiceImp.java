@@ -2,11 +2,15 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.account.Role;
 import com.example.groupassessment.enitity.account.User;
+import com.example.groupassessment.enitity.projection.UserProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.RoleRepo;
 import com.example.groupassessment.repository.UserRepo;
 import com.example.groupassessment.request_param.user.*;
 import com.example.groupassessment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -23,13 +27,19 @@ public class UserServiceImp implements UserService {
         this.roleRepo = roleRepo;
     }
     @Override
-    public List<User> index() {
-        return userRepo.findAll();
+    public List<UserProjection> index(Pagination pagination) {
+        System.out.println(pagination);
+        Page<UserProjection> user = userRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(user.getTotalElements());
+        return user.getContent() ;
     }
 
     @Override
-    public User show(Long id) {
-        return userRepo.findById(id)
+    public UserProjection show(Long id) {
+        return userRepo.findUserProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
@@ -78,7 +88,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public String update_password(Long id, UpdatePasswordParam password) {
+    public Boolean update_password(Long id, UpdatePasswordParam password) {
         User user = userRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
 
@@ -86,10 +96,10 @@ public class UserServiceImp implements UserService {
                 Objects.equals(password.getNewPassword(), password.getConfirmPassword());
 
         if (!is_match) {
-            return "Password verify mismatched please re-check";
+            return false;
         }
         user.setPassword(password.getNewPassword());
         userRepo.save(user);
-        return "Well to go password updated :)";
+        return true;
     }
 }

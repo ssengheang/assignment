@@ -2,6 +2,7 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.BorrowerImage;
+import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
 import com.example.groupassessment.repository.BorrowerImageRepo;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.request_param.borrower_image.CreateReqParam;
@@ -68,12 +69,12 @@ public class BorrowerImageServiceImp implements BorrowerImageService {
         }
     }
     @Override
-    public List<BorrowerImage> index(){
-        return borrowerImageRepo.findAll();
+    public List<BorrowerImageProjection> index(){
+        return borrowerImageRepo.findAllBy();
     }
     @Override
-    public BorrowerImage show(Long id){
-        return borrowerImageRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
+    public BorrowerImageProjection show(Long id){
+        return borrowerImageRepo.findBorrowerImageProjectionById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
     @Override
     public BorrowerImage update(Long id, MultipartFile file){
@@ -92,10 +93,10 @@ public class BorrowerImageServiceImp implements BorrowerImageService {
         return borrowerImage;
     }
     @Override
-    public String delete(Long id){
+    public Boolean delete(Long id){
         BorrowerImage delete_borrower_image = borrowerImageRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         borrowerImageRepo.delete(delete_borrower_image);
-        return "Deleted";
+        return true;
     }
 
 

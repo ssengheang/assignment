@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.account.Role;
+import com.example.groupassessment.enitity.projection.RoleProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.role.*;
 import com.example.groupassessment.service.serviceImp.RoleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +26,54 @@ public class RoleController {
     }
 
     @GetMapping("")
-    public List<Role> listRole(){
+    public List<RoleProjection> listRole(){
         return roleServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Role getRoleById(@PathVariable(name = "id") Long id){
-        return roleServiceImp.show(id);
+    public ApiResponse getRoleById(@PathVariable(name = "id") Long id){
+        RoleProjection roleProjection = roleServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                roleProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public Role updateRole(@PathVariable(name = "id") Long id, @Validated @RequestBody ReqParam role){
-        return roleServiceImp.update(id, role);
+    public ApiResponse updateRole(@PathVariable(name = "id") Long id, @Validated @RequestBody ReqParam role){
+        Role role1 = roleServiceImp.update(id, role);
+        RoleProjection roleProjection = roleServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                roleProjection
+        );
+    }
+
+    @PutMapping("/{id}/set-permission")
+    public ApiResponse setPermission(@PathVariable(name = "id") Long id, @RequestBody SetPermission feature){
+        Role role = roleServiceImp.set_permission(id, feature);
+        RoleProjection roleProjection = roleServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                roleProjection
+        );
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRole(@PathVariable(name = "id") Long id){
-        return roleServiceImp.delete(id);
+    public ApiResponse deleteRole(@PathVariable(name = "id") Long id){
+        Boolean isDeleted = roleServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

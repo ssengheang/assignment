@@ -1,15 +1,19 @@
 package com.example.groupassessment.controller;
 
-import com.example.groupassessment.enitity.account.Role;
 import com.example.groupassessment.enitity.account.User;
-import com.example.groupassessment.request_param.role.ReqParam;
+import com.example.groupassessment.enitity.projection.UserProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.user.*;
 import com.example.groupassessment.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -21,37 +25,82 @@ public class UserController {
     }
 
     @GetMapping("")
-    public List<User> listUser(){
-        return userServiceImp.index();
+    public Map<String, Object> listUser(Pagination pagination){
+        List<UserProjection> user = userServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", user);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")
-    public User getOneUser(@PathVariable(name = "id") Long id){
-        return userServiceImp.show(id);
+    public ApiResponse getOneUser(@PathVariable(name = "id") Long id){
+        UserProjection user =  userServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                user
+        );
     }
 
     @PostMapping("")
-    public User createUser(@Validated @RequestBody CreateReqParam user){
-        return userServiceImp.create(user);
+    public ApiResponse createUser(@Validated @RequestBody CreateReqParam user){
+        User user1 = userServiceImp.create(user);
+        UserProjection userProjection = userServiceImp.show(user1.getId());
+        return new ApiResponse<>(
+                ApiStatus.SUC_CREATED.getCode(),
+                ApiStatus.SUC_CREATED.getMessage(),
+                userProjection
+        );
     }
 
     @PutMapping("/{id}/activate")
-    public User activate(@PathVariable(name = "id") Long id){
-        return userServiceImp.activate(id);
+    public ApiResponse activate(@PathVariable(name = "id") Long id){
+        User user = userServiceImp.activate(id);
+        UserProjection userProjection = userServiceImp.show((user.getId()));
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                userProjection
+        );
     }
 
     @PutMapping("/{id}/deactivate")
-    public User deactivate(@PathVariable(name = "id") Long id){
-        return userServiceImp.deactivate(id);
+    public ApiResponse deactivate(@PathVariable(name = "id") Long id){
+        User user = userServiceImp.deactivate(id);
+        UserProjection userProjection = userServiceImp.show((user.getId()));
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                userProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable(name = "id") Long id, @RequestBody UpdateReqParam user){
-        return userServiceImp.update(id, user);
+    public ApiResponse update(@PathVariable(name = "id") Long id, @RequestBody UpdateReqParam user){
+        User user1 =userServiceImp.update(id, user);
+        UserProjection userProjection = userServiceImp.show((user1.getId()));
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                userProjection
+        );
     }
 
     @PutMapping("/{id}/update-password")
-    public String updatePassword(@PathVariable(name = "id") Long id, @RequestBody UpdatePasswordParam password) {
-        return userServiceImp.update_password(id, password);
+    public ApiResponse updatePassword(@PathVariable(name = "id") Long id, @RequestBody UpdatePasswordParam password) {
+        Boolean isSuccess = userServiceImp.update_password(id, password);
+        if (!isSuccess) {
+            return new ApiResponse<>(
+                    ApiStatus.FAI_UPDATED.getCode(),
+                    ApiStatus.FAI_UPDATED.getMessage()
+            );
+        }
+        UserProjection userProjection = userServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                userProjection
+        );
     }
 }

@@ -4,6 +4,7 @@ import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.PaymentMethod;
 import com.example.groupassessment.enitity.Repayment;
+import com.example.groupassessment.enitity.projection.RepaymentProjection;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.repository.PaymentMethodRepo;
@@ -30,15 +31,14 @@ public class RepaymentServiceImp implements RepaymentService {
     }
 
     @Override
-    public List<Repayment> index() {
-        return repaymentRepo.findAll();
+    public List<RepaymentProjection> index() {
+        return repaymentRepo.findAllBy();
     }
 
     @Override
-    public Repayment show(Long id) {
-        Repayment repayment = repaymentRepo.findById(id)
+    public RepaymentProjection show(Long id) {
+        return repaymentRepo.findRepaymentProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
-        return repayment;
     }
 
     @Override
@@ -68,10 +68,10 @@ public class RepaymentServiceImp implements RepaymentService {
     }
 
     @Override
-    public String delete(Long id) {
+    public Boolean delete(Long id) {
         Repayment repayment = repaymentRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         repaymentRepo.delete(repayment);
-        return "Deleted";
+        return true;
     }
 }

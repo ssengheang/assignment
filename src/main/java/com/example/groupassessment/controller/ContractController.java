@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Contract;
+import com.example.groupassessment.enitity.projection.ContractProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.contract.ReqBorrowerId;
 import com.example.groupassessment.request_param.contract.ReqLoanId;
 import com.example.groupassessment.service.serviceImp.ContractServiceImp;
@@ -46,22 +49,43 @@ public class ContractController {
     }
 
     @GetMapping("")
-    public List<Contract> getAll(){
+    public List<ContractProjection> getAll(){
         return contractServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public Contract getOne(@PathVariable(value = "id") Long id){
-        return contractServiceImp.show(id);
+    public ApiResponse getOne(@PathVariable(value = "id") Long id){
+        ContractProjection contractProjection = contractServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                contractProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public Contract update(@PathVariable(value = "id") Long id, @RequestParam("file") MultipartFile file){
-        return contractServiceImp.update(id, file);
+    public ApiResponse update(@PathVariable(value = "id") Long id, @RequestParam("file") MultipartFile file){
+        Contract contract = contractServiceImp.update(id, file);
+        ContractProjection contractProjection = contractServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                contractProjection
+        );
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable(value = "id") Long id){
-        return contractServiceImp.delete(id);
+    public ApiResponse delete(@PathVariable(value = "id") Long id){
+        Boolean isDeleted = contractServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

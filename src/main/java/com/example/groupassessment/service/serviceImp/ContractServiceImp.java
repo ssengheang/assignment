@@ -3,6 +3,7 @@ package com.example.groupassessment.service.serviceImp;
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.Contract;
 import com.example.groupassessment.enitity.Loan;
+import com.example.groupassessment.enitity.projection.ContractProjection;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.ContractRepo;
 import com.example.groupassessment.repository.LoanRepo;
@@ -78,12 +79,12 @@ public class ContractServiceImp implements ContractService {
         }
     }
     @Override
-    public List<Contract> index(){
-        return contractRepo.findAll();
+    public List<ContractProjection> index(){
+        return contractRepo.findAllBy();
     }
     @Override
-    public Contract show(Long id){
-        return contractRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
+    public ContractProjection show(Long id){
+        return contractRepo.findContractProjectionById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
     @Override
     public Contract update(Long id, MultipartFile file){
@@ -102,9 +103,9 @@ public class ContractServiceImp implements ContractService {
         return contract;
     }
     @Override
-    public String delete(Long id){
+    public Boolean delete(Long id){
         Contract contract = contractRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         contractRepo.delete(contract);
-        return "Deleted";
+        return true;
     }
 }

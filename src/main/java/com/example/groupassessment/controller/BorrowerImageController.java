@@ -1,6 +1,9 @@
 package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.BorrowerImage;
+import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
+import com.example.groupassessment.enitity.response.ApiResponse;
+import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.request_param.borrower_image.CreateReqParam;
 import com.example.groupassessment.service.serviceImp.BorrowerImageServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,22 +47,43 @@ public class BorrowerImageController {
     }
 
     @GetMapping("")
-    public List<BorrowerImage> getAll(){
+    public List<BorrowerImageProjection> getAll(){
         return borrowerImageServiceImp.index();
     }
 
     @GetMapping("/{id}")
-    public BorrowerImage getOne(@PathVariable(value = "id") Long id){
-        return borrowerImageServiceImp.show(id);
+    public ApiResponse getOne(@PathVariable(value = "id") Long id){
+        BorrowerImageProjection borrowerImageProjection = borrowerImageServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_RETRIEVED.getCode(),
+                ApiStatus.SUC_RETRIEVED.getMessage(),
+                borrowerImageProjection
+        );
     }
 
     @PutMapping("/{id}")
-    public BorrowerImage update(@PathVariable(value = "id") Long id, @RequestParam("file") MultipartFile file){
-        return borrowerImageServiceImp.update(id, file);
+    public ApiResponse update(@PathVariable(value = "id") Long id, @RequestParam("file") MultipartFile file){
+        BorrowerImage borrowerImage = borrowerImageServiceImp.update(id, file);
+        BorrowerImageProjection borrowerImageProjection = borrowerImageServiceImp.show(id);
+        return new ApiResponse<>(
+                ApiStatus.SUC_UPDATED.getCode(),
+                ApiStatus.SUC_UPDATED.getMessage(),
+                borrowerImageProjection
+        );
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable(value = "id") Long id){
-        return borrowerImageServiceImp.delete(id);
+    public ApiResponse delete(@PathVariable(value = "id") Long id){
+        Boolean isDeleted = borrowerImageServiceImp.delete(id);
+        if (!isDeleted){
+            return new ApiResponse<>(
+                    ApiStatus.FAI_DELETED.getCode(),
+                    ApiStatus.FAI_DELETED.getMessage()
+            );
+        }
+        return new ApiResponse<>(
+                ApiStatus.SUC_DELETED.getCode(),
+                ApiStatus.SUC_DELETED.getMessage()
+        );
     }
 }

@@ -4,6 +4,7 @@ import com.example.groupassessment.enitity.Asset;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.Remark;
 import com.example.groupassessment.enitity.Type;
+import com.example.groupassessment.enitity.projection.RemarkProjection;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.repository.RemarkRepo;
 import com.example.groupassessment.request_param.remark.CreateReqParam;
@@ -26,13 +27,13 @@ public class RemarkServiceImp implements RemarkService {
     }
 
     @Override
-    public List<Remark> index() {
-        return remarkRepo.findAll();
+    public List<RemarkProjection> index() {
+        return remarkRepo.findAllBy();
     }
 
     @Override
-    public Remark show(Long id){
-        return remarkRepo.findById(id)
+    public RemarkProjection show(Long id){
+        return remarkRepo.findRemarkProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
@@ -59,9 +60,9 @@ public class RemarkServiceImp implements RemarkService {
     }
 
     @Override
-    public String delete(Long id){
+    public Boolean delete(Long id){
         Remark remark = remarkRepo.findById(id).orElseThrow(() -> new ResourceAccessException("No resource found!"));
         remarkRepo.delete(remark);
-        return "Deleted!";
+        return true;
     }
 }

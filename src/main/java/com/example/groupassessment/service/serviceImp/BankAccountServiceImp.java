@@ -3,6 +3,7 @@ package com.example.groupassessment.service.serviceImp;
 import com.example.groupassessment.enitity.Bank;
 import com.example.groupassessment.enitity.BankAccount;
 import com.example.groupassessment.enitity.Borrower;
+import com.example.groupassessment.enitity.projection.BankAccountProjection;
 import com.example.groupassessment.repository.BankAccountRepo;
 import com.example.groupassessment.repository.BankRepo;
 import com.example.groupassessment.repository.BorrowerRepo;
@@ -26,13 +27,13 @@ public class BankAccountServiceImp implements BankAccountService {
         this.bankRepo = bankRepo;
     }
     @Override
-    public List<BankAccount> index() {
-        return bankAccountRepo.findAll();
+    public List<BankAccountProjection> index() {
+        return bankAccountRepo.findAllBy();
     }
 
     @Override
-    public BankAccount show(Long id) {
-        return bankAccountRepo.findById(id)
+    public BankAccountProjection show(Long id) {
+        return bankAccountRepo.findBankAccountProjectionById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
     }
 
@@ -50,7 +51,7 @@ public class BankAccountServiceImp implements BankAccountService {
         BankAccount bankAccount1 = new BankAccount();
         Bank bank = bankRepo.findById(bankAccount.getBankId())
                 .orElseThrow(() -> new ResourceAccessException("Constrain error (No Bank resource found!)"));
-        Borrower borrower = borrowerRepo.findById(bankAccount.getBankId())
+        Borrower borrower = borrowerRepo.findById(bankAccount.getBorrowerId())
                 .orElseThrow(() -> new ResourceAccessException("Constrain error (No Borrower resource found!)"));
         bankAccount1.setBank(bank);
         bankAccount1.setBorrower(borrower);
@@ -60,10 +61,10 @@ public class BankAccountServiceImp implements BankAccountService {
     }
 
     @Override
-    public String delete(Long id) {
+    public Boolean delete(Long id) {
         BankAccount bankAccount1 = bankAccountRepo.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("No resource found!"));
         bankAccountRepo.delete(bankAccount1);
-        return "Deleted";
+        return true;
     }
 }

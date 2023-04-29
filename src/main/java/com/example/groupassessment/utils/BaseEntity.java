@@ -22,9 +22,9 @@ public abstract class BaseEntity{
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-//    @Column(name = "updated_at", columnDefinition = "TIMESTAMP",  updatable = true, nullable = false)
-//    @UpdateTimestamp
-//    private LocalDateTime updatedAt;
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP",  updatable = true, nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @Column(name = "created_by", length = 100)
     private String createdBy;
