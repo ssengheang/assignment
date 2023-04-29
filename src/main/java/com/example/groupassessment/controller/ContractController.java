@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/contracts")
+@RequestMapping("/api/v1/contracts")
 public class ContractController {
     private ContractServiceImp contractServiceImp;
     @Autowired

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/repayments")
+@RequestMapping("/api/v1/repayments")
 public class RepaymentController {
     private RepaymentServiceImp repaymentServiceImp;
     @Autowired

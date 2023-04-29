@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/remarks")
+@RequestMapping("/api/v1/remarks")
 public class RemarkController {
     private RemarkServiceImp remarkServiceImp;
     @Autowired

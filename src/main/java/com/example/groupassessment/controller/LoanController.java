@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/loans")
+@RequestMapping("/api/v1/loans")
 public class LoanController {
     private LoanServiceImp loanServiceImp;
     @Autowired

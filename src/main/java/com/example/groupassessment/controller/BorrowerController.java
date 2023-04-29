@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/borrowers")
+@RequestMapping("/api/v1/borrowers")
 public class BorrowerController {
     private BorrowerServiceImp borrowerServiceImp;
     private AddressServiceImp addressServiceImp;

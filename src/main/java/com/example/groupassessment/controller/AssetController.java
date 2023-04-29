@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/assets")
+@RequestMapping("/api/v1/assets")
 public class AssetController {
     private AssetServiceImp assetServiceImp;
     @Autowired

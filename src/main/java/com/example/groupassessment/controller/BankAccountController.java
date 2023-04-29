@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/bank-accounts")
+@RequestMapping("/api/v1/bank-accounts")
 public class BankAccountController {
     private BankAccountServiceImp bankAccountServiceImp;
     @Autowired

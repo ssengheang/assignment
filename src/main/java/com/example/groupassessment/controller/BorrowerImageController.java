@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/borrower-images")
+@RequestMapping("/api/v1/borrower-images")
 public class BorrowerImageController {
     private BorrowerImageServiceImp borrowerImageServiceImp;
     @Autowired

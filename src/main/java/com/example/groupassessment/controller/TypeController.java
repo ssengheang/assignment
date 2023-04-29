@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/types")
+@RequestMapping("/api/v1/types")
 public class TypeController {
     private TypeServiceImp typeServiceImp;
     @Autowired

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/permissions")
+@RequestMapping("/api/v1/permissions")
 public class PermissionController {
     private PermissionServiceImp permissionServiceImp;
     @Autowired
