@@ -2,15 +2,19 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.PaymentMethod;
 import com.example.groupassessment.enitity.projection.PaymentMethodProjection;
+import com.example.groupassessment.enitity.projection.PermissionProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.payment_method.*;
 import com.example.groupassessment.service.serviceImp.PaymentMethodServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/payment-methods")
@@ -33,8 +37,12 @@ public class PaymentMethodController {
     }
 
     @GetMapping("")
-    public List<PaymentMethodProjection> listPaymentMethod(){
-        return paymentMethodServiceImp.index();
+    public Map<String, Object> listPaymentMethod(Pagination pagination){
+        List<PaymentMethodProjection> paymentMethodProjections = paymentMethodServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", paymentMethodProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

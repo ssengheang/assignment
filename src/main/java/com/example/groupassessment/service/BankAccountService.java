@@ -2,12 +2,13 @@ package com.example.groupassessment.service;
 
 import com.example.groupassessment.enitity.BankAccount;
 import com.example.groupassessment.enitity.projection.BankAccountProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.bank_account.*;
 
 import java.util.List;
 
 public interface BankAccountService {
-    List<BankAccountProjection> index();
+    List<BankAccountProjection> index(Pagination pagination);
     BankAccountProjection show(Long id);
     BankAccount update(Long id, UpdateReqParam bankAccount);
     BankAccount create(CreateReqParam bankAccount);

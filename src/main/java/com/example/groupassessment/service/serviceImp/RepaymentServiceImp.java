@@ -5,6 +5,8 @@ import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.PaymentMethod;
 import com.example.groupassessment.enitity.Repayment;
 import com.example.groupassessment.enitity.projection.RepaymentProjection;
+import com.example.groupassessment.enitity.projection.RoleProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.repository.PaymentMethodRepo;
@@ -12,6 +14,8 @@ import com.example.groupassessment.repository.RepaymentRepo;
 import com.example.groupassessment.request_param.repayment.CreateReqParam;
 import com.example.groupassessment.service.RepaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -31,8 +35,13 @@ public class RepaymentServiceImp implements RepaymentService {
     }
 
     @Override
-    public List<RepaymentProjection> index() {
-        return repaymentRepo.findAllBy();
+    public List<RepaymentProjection> index(Pagination pagination) {
+        Page<RepaymentProjection> repaymentProjections = repaymentRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(repaymentProjections.getTotalElements());
+        return repaymentProjections.getContent();
     }
 
     @Override

@@ -3,11 +3,15 @@ package com.example.groupassessment.service.serviceImp;
 import com.example.groupassessment.enitity.account.Permission;
 import com.example.groupassessment.enitity.account.Role;
 import com.example.groupassessment.enitity.projection.RoleProjection;
+import com.example.groupassessment.enitity.projection.TypeProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.PermissionRepo;
 import com.example.groupassessment.repository.RoleRepo;
 import com.example.groupassessment.request_param.role.ReqParam;
 import com.example.groupassessment.request_param.role.SetPermission;
 import com.example.groupassessment.service.RoleService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.util.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +32,13 @@ public class RoleServiceImp implements RoleService {
 
 
     @Override
-    public List<RoleProjection> index() {
-        return roleRepo.findAllBy();
+    public List<RoleProjection> index(Pagination pagination) {
+        Page<RoleProjection> roleProjections = roleRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(roleProjections.getTotalElements());
+        return roleProjections.getContent();
     }
 
     @Override

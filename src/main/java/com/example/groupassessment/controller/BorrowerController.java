@@ -2,9 +2,11 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Address;
 import com.example.groupassessment.enitity.Borrower;
+import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
 import com.example.groupassessment.enitity.projection.BorrowerProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.address.ReqParam;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
 import com.example.groupassessment.request_param.borrower.UpdateReqParam;
@@ -13,10 +15,12 @@ import com.example.groupassessment.service.serviceImp.AddressServiceImp;
 import com.example.groupassessment.service.serviceImp.BorrowerServiceImp;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +52,12 @@ public class BorrowerController {
     }
 
     @GetMapping("")
-    public List<BorrowerProjection> listBorrower(){
-        return borrowerServiceImp.index();
+    public Map<String, Object> listBorrower(Pagination pagination){
+        List<BorrowerProjection> borrowerProjections = borrowerServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", borrowerProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

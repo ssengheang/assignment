@@ -4,7 +4,9 @@ import com.example.groupassessment.enitity.Asset;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.Type;
 import com.example.groupassessment.enitity.projection.AssetProjection;
+import com.example.groupassessment.enitity.projection.BankAccountProjection;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.exception.NotFoundException;
 import com.example.groupassessment.repository.AssetRepo;
 import com.example.groupassessment.repository.LoanRepo;
@@ -13,6 +15,8 @@ import com.example.groupassessment.request_param.asset.CreateReqParam;
 import com.example.groupassessment.request_param.asset.UpdateReqParam;
 import com.example.groupassessment.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,8 +33,13 @@ public class AssetServiceImp implements AssetService {
     }
 
     @Override
-    public List<AssetProjection> index() {
-        return assetRepo.findAllBy();
+    public List<AssetProjection> index(Pagination pagination) {
+        Page<AssetProjection> assetProjections = assetRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(assetProjections.getTotalElements());
+        return assetProjections.getContent();
     }
 
     @Override

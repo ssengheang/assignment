@@ -2,12 +2,16 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.projection.BorrowerProjection;
+import com.example.groupassessment.enitity.projection.ContractProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
 import com.example.groupassessment.request_param.borrower.UpdateReqParam;
 import com.example.groupassessment.response.BorrowerView;
 import com.example.groupassessment.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -22,8 +26,13 @@ public class BorrowerServiceImp implements BorrowerService {
     }
 
     @Override
-    public List<BorrowerProjection> index() {
-        return borrowerRepo.findAllBy();
+    public List<BorrowerProjection> index(Pagination pagination) {
+        Page<BorrowerProjection> borrowerProjections = borrowerRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(borrowerProjections.getTotalElements());
+        return borrowerProjections.getContent();
     }
 
     @Override

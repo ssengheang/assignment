@@ -4,6 +4,8 @@ import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.enum_data_type.LoanStatus;
 import com.example.groupassessment.enitity.projection.LoanProjection;
+import com.example.groupassessment.enitity.projection.PaymentMethodProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.request_param.loan.CreateReqParam;
@@ -11,6 +13,8 @@ import com.example.groupassessment.request_param.loan.UpdateReqParam;
 import com.example.groupassessment.response.LoanView;
 import com.example.groupassessment.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -29,8 +33,13 @@ public class LoanServiceImp implements LoanService {
     }
 
     @Override
-    public List<LoanProjection> index() {
-        return loanRepo.findAllBy();
+    public List<LoanProjection> index(Pagination pagination) {
+        Page<LoanProjection> loanProjections = loanRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(loanProjections.getTotalElements());
+        return loanProjections.getContent();
     }
     @Override
     public LoanProjection show(Long id){

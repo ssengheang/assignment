@@ -2,15 +2,20 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.account.Role;
 import com.example.groupassessment.enitity.projection.RoleProjection;
+import com.example.groupassessment.enitity.projection.TypeProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.role.*;
 import com.example.groupassessment.service.serviceImp.RoleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/roles")
 public class RoleController {
@@ -26,8 +31,12 @@ public class RoleController {
     }
 
     @GetMapping("")
-    public List<RoleProjection> listRole(){
-        return roleServiceImp.index();
+    public  Map<String, Object> listRole(Pagination pagination){
+        List<RoleProjection> role = roleServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", role);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

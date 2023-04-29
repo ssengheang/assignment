@@ -2,8 +2,10 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Asset;
 import com.example.groupassessment.enitity.projection.AssetProjection;
+import com.example.groupassessment.enitity.projection.BankAccountProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.asset.CreateReqParam;
 import com.example.groupassessment.request_param.asset.UpdateReqParam;
 import com.example.groupassessment.service.serviceImp.AssetServiceImp;
@@ -11,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/assets")
 public class AssetController {
@@ -33,8 +38,12 @@ public class AssetController {
     }
 
     @GetMapping("")
-    public List<AssetProjection> listAsset(){
-        return assetServiceImp.index();
+    public Map<String, Object> listAsset(Pagination pagination){
+        List<AssetProjection> assetProjections = assetServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", assetProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

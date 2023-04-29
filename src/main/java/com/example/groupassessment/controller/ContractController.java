@@ -2,8 +2,10 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Contract;
 import com.example.groupassessment.enitity.projection.ContractProjection;
+import com.example.groupassessment.enitity.projection.LoanProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.contract.ReqBorrowerId;
 import com.example.groupassessment.request_param.contract.ReqLoanId;
 import com.example.groupassessment.service.serviceImp.ContractServiceImp;
@@ -15,7 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/contracts")
@@ -49,8 +53,12 @@ public class ContractController {
     }
 
     @GetMapping("")
-    public List<ContractProjection> getAll(){
-        return contractServiceImp.index();
+    public Map<String, Object> getAll(Pagination pagination){
+        List<ContractProjection> contractProjections = contractServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", contractProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

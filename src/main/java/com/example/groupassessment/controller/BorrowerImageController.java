@@ -2,8 +2,10 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.BorrowerImage;
 import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
+import com.example.groupassessment.enitity.projection.ContractProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.borrower_image.CreateReqParam;
 import com.example.groupassessment.service.serviceImp.BorrowerImageServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/borrower-images")
@@ -47,8 +51,12 @@ public class BorrowerImageController {
     }
 
     @GetMapping("")
-    public List<BorrowerImageProjection> getAll(){
-        return borrowerImageServiceImp.index();
+    public Map<String, Object> getAll(Pagination pagination){
+        List<BorrowerImageProjection> borrowerImageProjections = borrowerImageServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", borrowerImageProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

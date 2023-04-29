@@ -2,8 +2,10 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Remark;
 import com.example.groupassessment.enitity.projection.RemarkProjection;
+import com.example.groupassessment.enitity.projection.RepaymentProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.remark.CreateReqParam;
 import com.example.groupassessment.request_param.remark.UpdateReqParam;
 import com.example.groupassessment.service.serviceImp.RemarkServiceImp;
@@ -11,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/remarks")
@@ -28,8 +32,12 @@ public class RemarkController {
     }
 
     @GetMapping("")
-    public List<RemarkProjection> listRemark(){
-        return remarkServiceImp.index();
+    public Map<String, Object> listRemark(Pagination pagination){
+        List<RemarkProjection> remark = remarkServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", remark);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

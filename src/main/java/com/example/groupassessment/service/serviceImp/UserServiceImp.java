@@ -28,13 +28,12 @@ public class UserServiceImp implements UserService {
     }
     @Override
     public List<UserProjection> index(Pagination pagination) {
-        System.out.println(pagination);
         Page<UserProjection> user = userRepo.findAllBy(
                 PageRequest.of(pagination.getPage()-1, pagination.getSize())
         );
 
         pagination.setTotalCounts(user.getTotalElements());
-        return user.getContent() ;
+        return user.getContent();
     }
 
     @Override

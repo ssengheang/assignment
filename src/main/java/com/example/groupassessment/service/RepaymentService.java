@@ -2,12 +2,13 @@ package com.example.groupassessment.service;
 
 import com.example.groupassessment.enitity.Repayment;
 import com.example.groupassessment.enitity.projection.RepaymentProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.repayment.CreateReqParam;
 
 import java.util.List;
 
 public interface RepaymentService {
-    List<RepaymentProjection> index();
+    List<RepaymentProjection> index(Pagination pagination);
     RepaymentProjection show(Long id);
     Repayment create(CreateReqParam repayment);
     Boolean delete(Long id);

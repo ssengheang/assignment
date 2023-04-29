@@ -2,10 +2,14 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Bank;
 import com.example.groupassessment.enitity.projection.BankProjection;
+import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BankRepo;
 import com.example.groupassessment.request_param.bank.ReqParam;
 import com.example.groupassessment.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -19,8 +23,13 @@ public class BankServiceImp implements BankService {
 
 
     @Override
-    public List<BankProjection> index() {
-        return bankRepo.findAllBy();
+    public List<BankProjection> index(Pagination pagination) {
+        Page<BankProjection> bankProjections = bankRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(bankProjections.getTotalElements());
+        return bankProjections.getContent();
     }
 
     @Override

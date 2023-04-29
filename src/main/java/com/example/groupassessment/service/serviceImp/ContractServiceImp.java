@@ -4,6 +4,8 @@ import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.Contract;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.projection.ContractProjection;
+import com.example.groupassessment.enitity.projection.LoanProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.repository.ContractRepo;
 import com.example.groupassessment.repository.LoanRepo;
@@ -14,6 +16,8 @@ import com.example.groupassessment.utils.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.multipart.MultipartFile;
@@ -79,8 +83,13 @@ public class ContractServiceImp implements ContractService {
         }
     }
     @Override
-    public List<ContractProjection> index(){
-        return contractRepo.findAllBy();
+    public List<ContractProjection> index(Pagination pagination){
+        Page<ContractProjection> contractProjections = contractRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(contractProjections.getTotalElements());
+        return contractProjections.getContent();
     }
     @Override
     public ContractProjection show(Long id){

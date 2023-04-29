@@ -3,6 +3,8 @@ package com.example.groupassessment.service.serviceImp;
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.BorrowerImage;
 import com.example.groupassessment.enitity.projection.BorrowerImageProjection;
+import com.example.groupassessment.enitity.projection.BorrowerProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerImageRepo;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.request_param.borrower_image.CreateReqParam;
@@ -11,6 +13,8 @@ import com.example.groupassessment.utils.UploadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,8 +73,13 @@ public class BorrowerImageServiceImp implements BorrowerImageService {
         }
     }
     @Override
-    public List<BorrowerImageProjection> index(){
-        return borrowerImageRepo.findAllBy();
+    public List<BorrowerImageProjection> index(Pagination pagination){
+        Page<BorrowerImageProjection> borrowerImageProjections = borrowerImageRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(borrowerImageProjections.getTotalElements());
+        return borrowerImageProjections.getContent();
     }
     @Override
     public BorrowerImageProjection show(Long id){

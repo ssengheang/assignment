@@ -2,8 +2,10 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.projection.LoanProjection;
+import com.example.groupassessment.enitity.projection.PaymentMethodProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.loan.CreateReqParam;
 import com.example.groupassessment.request_param.loan.UpdateReqParam;
 import com.example.groupassessment.response.LoanView;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,8 +39,12 @@ public class LoanController {
     }
 
     @GetMapping("")
-    public List<LoanProjection> listLoan(){
-        return loanServiceImp.index();
+    public Map<String, Object> listLoan(Pagination pagination){
+        List<LoanProjection> loanProjections = loanServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", loanProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

@@ -5,12 +5,16 @@ import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.Remark;
 import com.example.groupassessment.enitity.Type;
 import com.example.groupassessment.enitity.projection.RemarkProjection;
+import com.example.groupassessment.enitity.projection.RepaymentProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.LoanRepo;
 import com.example.groupassessment.repository.RemarkRepo;
 import com.example.groupassessment.request_param.remark.CreateReqParam;
 import com.example.groupassessment.request_param.remark.UpdateReqParam;
 import com.example.groupassessment.service.RemarkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -27,8 +31,13 @@ public class RemarkServiceImp implements RemarkService {
     }
 
     @Override
-    public List<RemarkProjection> index() {
-        return remarkRepo.findAllBy();
+    public List<RemarkProjection> index(Pagination pagination) {
+        Page<RemarkProjection> remarkProjections = remarkRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(remarkProjections.getTotalElements());
+        return remarkProjections.getContent();
     }
 
     @Override

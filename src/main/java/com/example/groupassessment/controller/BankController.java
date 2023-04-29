@@ -2,15 +2,20 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.Bank;
 import com.example.groupassessment.enitity.projection.BankProjection;
+import com.example.groupassessment.enitity.projection.BorrowerProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.bank.ReqParam;
 import com.example.groupassessment.service.serviceImp.BankServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/banks")
 public class BankController {
@@ -32,8 +37,12 @@ public class BankController {
     }
 
     @GetMapping("")
-    public List<BankProjection> listBank(){
-        return bankServiceImp.index();
+    public Map<String, Object> listBank(Pagination pagination){
+        List<BankProjection> bankProjections = bankServiceImp.index(pagination);
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", bankProjections);
+        map.put("pagination", pagination);
+        return map;
     }
 
     @GetMapping("/{id}")

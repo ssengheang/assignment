@@ -4,6 +4,8 @@ import com.example.groupassessment.enitity.Bank;
 import com.example.groupassessment.enitity.BankAccount;
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.projection.BankAccountProjection;
+import com.example.groupassessment.enitity.projection.BankProjection;
+import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BankAccountRepo;
 import com.example.groupassessment.repository.BankRepo;
 import com.example.groupassessment.repository.BorrowerRepo;
@@ -11,6 +13,8 @@ import com.example.groupassessment.request_param.bank_account.CreateReqParam;
 import com.example.groupassessment.request_param.bank_account.UpdateReqParam;
 import com.example.groupassessment.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -27,8 +31,13 @@ public class BankAccountServiceImp implements BankAccountService {
         this.bankRepo = bankRepo;
     }
     @Override
-    public List<BankAccountProjection> index() {
-        return bankAccountRepo.findAllBy();
+    public List<BankAccountProjection> index(Pagination pagination) {
+        Page<BankAccountProjection> bankAccountProjections = bankAccountRepo.findAllBy(
+                PageRequest.of(pagination.getPage()-1, pagination.getSize())
+        );
+
+        pagination.setTotalCounts(bankAccountProjections.getTotalElements());
+        return bankAccountProjections.getContent();
     }
 
     @Override
