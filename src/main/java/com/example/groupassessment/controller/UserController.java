@@ -6,6 +6,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.user.*;
+import com.example.groupassessment.service.UserService;
 import com.example.groupassessment.service.serviceImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -18,9 +19,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-    private UserServiceImp userServiceImp;
+    private UserService userServiceImp;
     @Autowired
-    public UserController(UserServiceImp userServiceImp){
+    public UserController(UserService userServiceImp){
         this.userServiceImp = userServiceImp;
     }
 

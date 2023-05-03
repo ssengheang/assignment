@@ -4,7 +4,6 @@ import com.example.groupassessment.enitity.Asset;
 import com.example.groupassessment.enitity.Loan;
 import com.example.groupassessment.enitity.Type;
 import com.example.groupassessment.enitity.projection.AssetProjection;
-import com.example.groupassessment.enitity.projection.BankAccountProjection;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.exception.NotFoundException;

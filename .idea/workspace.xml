@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="022b4451-c236-41cf-9a4e-5797a83de8e6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/AssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/AssetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BankAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BankAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/BorrowerImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/ContractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/ContractController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/LoanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/PaymentMethodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/PaymentMethodController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RemarkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RemarkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RepaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/TypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/TypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/enitity/account/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/RoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/RoleRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/repository/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/AssetServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/AssetServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/groupassessment/service/serviceImp/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/groupassessment/enitity/account/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

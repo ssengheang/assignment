@@ -13,16 +13,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
 public class UserServiceImp implements UserService {
+    private final PasswordEncoder passwordEncoder;
     private UserRepo userRepo;
     private RoleRepo roleRepo;
     @Autowired
-    public UserServiceImp(UserRepo userRepo, RoleRepo roleRepo){
+    public UserServiceImp(PasswordEncoder passwordEncoder, UserRepo userRepo, RoleRepo roleRepo){
+        this.passwordEncoder = passwordEncoder;
         this.userRepo = userRepo;
         this.roleRepo = roleRepo;
     }
@@ -60,7 +63,7 @@ public class UserServiceImp implements UserService {
         user1.setRole(role);
         user1.setUsername(user.getUsername());
         user1.setEmail(user.getEmail());
-        user1.setPassword(user.getPassword());
+        user1.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user1);
     }
 

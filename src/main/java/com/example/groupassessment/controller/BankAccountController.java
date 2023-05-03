@@ -2,7 +2,6 @@ package com.example.groupassessment.controller;
 
 import com.example.groupassessment.enitity.BankAccount;
 import com.example.groupassessment.enitity.projection.BankAccountProjection;
-import com.example.groupassessment.enitity.projection.BankProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
