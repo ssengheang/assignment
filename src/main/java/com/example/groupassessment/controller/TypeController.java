@@ -6,6 +6,7 @@ import com.example.groupassessment.enitity.projection.UserProjection;
 import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
+import com.example.groupassessment.service.TypeService;
 import com.example.groupassessment.service.serviceImp.TypeServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/types")
 public class TypeController {
-    private TypeServiceImp typeServiceImp;
+    private TypeService typeServiceImp;
     @Autowired
-    public TypeController(TypeServiceImp typeServiceImp){
+    public TypeController(TypeService typeServiceImp){
         this.typeServiceImp = typeServiceImp;
     }
 

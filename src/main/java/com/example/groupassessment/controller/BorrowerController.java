@@ -11,6 +11,8 @@ import com.example.groupassessment.request_param.address.ReqParam;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
 import com.example.groupassessment.request_param.borrower.UpdateReqParam;
 import com.example.groupassessment.response.BorrowerView;
+import com.example.groupassessment.service.AddressService;
+import com.example.groupassessment.service.BorrowerService;
 import com.example.groupassessment.service.serviceImp.AddressServiceImp;
 import com.example.groupassessment.service.serviceImp.BorrowerServiceImp;
 import org.springframework.beans.BeanUtils;
@@ -27,10 +29,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/borrowers")
 public class BorrowerController {
-    private BorrowerServiceImp borrowerServiceImp;
-    private AddressServiceImp addressServiceImp;
+    private BorrowerService borrowerServiceImp;
+    private AddressService addressServiceImp;
     @Autowired
-    public BorrowerController(BorrowerServiceImp borrowerServiceImp, AddressServiceImp addressServiceImp){
+    public BorrowerController(BorrowerService borrowerServiceImp, AddressService addressServiceImp){
         this.borrowerServiceImp = borrowerServiceImp;
         this.addressServiceImp = addressServiceImp;
     }

@@ -6,6 +6,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.bank_account.*;
+import com.example.groupassessment.service.BankAccountService;
 import com.example.groupassessment.service.serviceImp.BankAccountServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -18,9 +19,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/bank-accounts")
 public class BankAccountController {
-    private BankAccountServiceImp bankAccountServiceImp;
+    private BankAccountService bankAccountServiceImp;
     @Autowired
-    public BankAccountController(BankAccountServiceImp bankAccountServiceImp){
+    public BankAccountController(BankAccountService bankAccountServiceImp){
         this.bankAccountServiceImp = bankAccountServiceImp;
     }
 

@@ -8,6 +8,7 @@ import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.contract.ReqBorrowerId;
 import com.example.groupassessment.request_param.contract.ReqLoanId;
+import com.example.groupassessment.service.ContractService;
 import com.example.groupassessment.service.serviceImp.ContractServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -24,9 +25,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/contracts")
 public class ContractController {
-    private ContractServiceImp contractServiceImp;
+    private ContractService contractServiceImp;
     @Autowired
-    public ContractController(ContractServiceImp contractServiceImp){
+    public ContractController(ContractService contractServiceImp){
         this.contractServiceImp = contractServiceImp;
     }
 

@@ -8,6 +8,7 @@ import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.remark.CreateReqParam;
 import com.example.groupassessment.request_param.remark.UpdateReqParam;
+import com.example.groupassessment.service.RemarkService;
 import com.example.groupassessment.service.serviceImp.RemarkServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -20,9 +21,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/remarks")
 public class RemarkController {
-    private RemarkServiceImp remarkServiceImp;
+    private RemarkService remarkServiceImp;
     @Autowired
-    public RemarkController(RemarkServiceImp remarkServiceImp){
+    public RemarkController(RemarkService remarkServiceImp){
         this.remarkServiceImp = remarkServiceImp;
     }
 

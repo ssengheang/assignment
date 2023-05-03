@@ -7,6 +7,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.repayment.CreateReqParam;
+import com.example.groupassessment.service.RepaymentService;
 import com.example.groupassessment.service.serviceImp.RepaymentServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,9 +20,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/repayments")
 public class RepaymentController {
-    private RepaymentServiceImp repaymentServiceImp;
+    private RepaymentService repaymentServiceImp;
     @Autowired
-    public RepaymentController(RepaymentServiceImp repaymentServiceImp){
+    public RepaymentController(RepaymentService repaymentServiceImp){
         this.repaymentServiceImp = repaymentServiceImp;
     }
 

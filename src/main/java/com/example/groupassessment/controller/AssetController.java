@@ -8,6 +8,7 @@ import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.asset.CreateReqParam;
 import com.example.groupassessment.request_param.asset.UpdateReqParam;
+import com.example.groupassessment.service.AssetService;
 import com.example.groupassessment.service.serviceImp.AssetServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -20,9 +21,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/assets")
 public class AssetController {
-    private AssetServiceImp assetServiceImp;
+    private AssetService assetServiceImp;
     @Autowired
-    public AssetController(AssetServiceImp assetServiceImp){
+    public AssetController(AssetService assetServiceImp){
         this.assetServiceImp = assetServiceImp;
     }
 

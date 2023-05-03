@@ -7,6 +7,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.permission.ReqParam;
+import com.example.groupassessment.service.PermissionService;
 import com.example.groupassessment.service.serviceImp.PermissionServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,9 +20,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/permissions")
 public class PermissionController {
-    private PermissionServiceImp permissionServiceImp;
+    private PermissionService permissionServiceImp;
     @Autowired
-    public PermissionController(PermissionServiceImp permissionServiceImp){
+    public PermissionController(PermissionService permissionServiceImp){
         this.permissionServiceImp = permissionServiceImp;
     }
 

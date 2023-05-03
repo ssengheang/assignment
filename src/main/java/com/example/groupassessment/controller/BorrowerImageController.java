@@ -7,6 +7,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.borrower_image.CreateReqParam;
+import com.example.groupassessment.service.BorrowerImageService;
 import com.example.groupassessment.service.serviceImp.BorrowerImageServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -23,9 +24,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/borrower-images")
 public class BorrowerImageController {
-    private BorrowerImageServiceImp borrowerImageServiceImp;
+    private BorrowerImageService borrowerImageServiceImp;
     @Autowired
-    public BorrowerImageController(BorrowerImageServiceImp borrowerImageServiceImp){
+    public BorrowerImageController(BorrowerImageService borrowerImageServiceImp){
         this.borrowerImageServiceImp = borrowerImageServiceImp;
     }
     @PostMapping("/upload")

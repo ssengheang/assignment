@@ -7,6 +7,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.payment_method.*;
+import com.example.groupassessment.service.PaymentMethodService;
 import com.example.groupassessment.service.serviceImp.PaymentMethodServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,9 +20,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/payment-methods")
 public class PaymentMethodController {
-    private PaymentMethodServiceImp paymentMethodServiceImp;
+    private PaymentMethodService paymentMethodServiceImp;
     @Autowired
-    public PaymentMethodController(PaymentMethodServiceImp paymentMethodServiceImp){
+    public PaymentMethodController(PaymentMethodService paymentMethodServiceImp){
         this.paymentMethodServiceImp = paymentMethodServiceImp;
     }
 

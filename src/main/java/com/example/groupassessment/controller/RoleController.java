@@ -7,6 +7,7 @@ import com.example.groupassessment.enitity.response.ApiResponse;
 import com.example.groupassessment.enitity.response.ApiStatus;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.role.*;
+import com.example.groupassessment.service.RoleService;
 import com.example.groupassessment.service.serviceImp.RoleServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,9 +20,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/roles")
 public class RoleController {
-    private RoleServiceImp roleServiceImp;
+    private RoleService roleServiceImp;
     @Autowired
-    public RoleController(RoleServiceImp roleServiceImp){
+    public RoleController(RoleService roleServiceImp){
         this.roleServiceImp = roleServiceImp;
     }
 
