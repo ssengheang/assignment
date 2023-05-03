@@ -4,8 +4,6 @@ import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.projection.BorrowerProjection;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
-import com.example.groupassessment.request_param.borrower.UpdateReqParam;
-import com.example.groupassessment.response.BorrowerView;
 
 import java.util.List;
 

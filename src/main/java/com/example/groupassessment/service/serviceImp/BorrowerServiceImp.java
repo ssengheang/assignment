@@ -2,12 +2,9 @@ package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.enitity.projection.BorrowerProjection;
-import com.example.groupassessment.enitity.projection.ContractProjection;
 import com.example.groupassessment.enitity.response.Pagination;
 import com.example.groupassessment.repository.BorrowerRepo;
 import com.example.groupassessment.request_param.borrower.CreateReqParam;
-import com.example.groupassessment.request_param.borrower.UpdateReqParam;
-import com.example.groupassessment.response.BorrowerView;
 import com.example.groupassessment.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
