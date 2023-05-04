@@ -1,6 +1,7 @@
 package com.example.groupassessment.enitity;
 
 import com.example.groupassessment.utils.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,9 +19,10 @@ public class PaymentMethod extends BaseEntity {
     private String methodName;
 
     @ManyToOne
-    @JoinColumn(name = "bank_id", nullable = true, insertable = false)
+    @JoinColumn(name = "bank_id", nullable = true)
     private Bank bank;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "paymentMethod")
     private List<Repayment> repayment;
 

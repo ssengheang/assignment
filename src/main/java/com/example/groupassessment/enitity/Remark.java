@@ -18,6 +18,6 @@ public class Remark extends BaseEntity {
     private String reason;
 
     @ManyToOne
-    @JoinColumn(name = "loan_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "loan_id", nullable = false, updatable = false)
     private Loan loan;
 }

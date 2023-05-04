@@ -1,6 +1,7 @@
 package com.example.groupassessment.enitity;
 
 import com.example.groupassessment.utils.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +18,13 @@ public class Contract extends BaseEntity {
     @Column(name = "path", length = 255, nullable = false)
     private String path;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "borrower_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "borrower_id", nullable = false, updatable = false)
     private Borrower borrower;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "loan_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "loan_id", nullable = false, updatable = false)
     private Loan loan;
 }
