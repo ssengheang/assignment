@@ -42,3 +42,5 @@ secrets.yml
 .sts4-cache
 
 /uploads
+docker-compose.yml
+Dockerfile

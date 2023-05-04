@@ -1,7 +1,6 @@
 package com.example.groupassessment.service.serviceImp;
 
 import com.example.groupassessment.enitity.Address;
-import com.example.groupassessment.enitity.Asset;
 import com.example.groupassessment.enitity.Borrower;
 import com.example.groupassessment.repository.AddressRepo;
 import com.example.groupassessment.request_param.address.ReqParam;

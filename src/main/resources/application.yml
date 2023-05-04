@@ -1,7 +1,4 @@
 
-
-
-
 #spring.datasource.url=jdbc:postgresql://localhost:5432/employee
 #spring.datasource.username=postgres
 #spring.datasource.password=postgres
@@ -41,4 +38,3 @@ application:
       expiration: 60000 # 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
-
